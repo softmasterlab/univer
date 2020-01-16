@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %} Регистрация {% endblock title %}
+{% block caption %} Страница Регитсрации {% endblock caption %}
+
+{% block content %}
+    <!-- Форма регистрации: -->
+    <div class="container" style="text-align: center; margin: 30px 0px">
+        <h3>Регистрация</h3>
+        <form id="form1" method="post" action="/account/reg">
+            {% csrf_token %}
+            <p>
+                Логин:<br>
+                <input type="text" id="login" name="login" required/>
+            </p>
+            <p>
+                Пароль:<br>
+                <input type="password" id="pass1" name="pass1" required/>
+            </p>
+            <p>
+                Повтор:<br>
+                <input type="password" id="pass2" name="pass2" required/>
+            </p>
+            <p>
+                E-Mail:<br>
+                <input type="email" id="email" name="email" required/>
+            </p>
+            <p style="margin-top: 30px">
+                <input type="submit" value="Отправить" class="b1"/>
+                <input type="reset" value="Очистить" class="b1"/>
+            </p>
+        </form>
+    </div>
+    <!-- Таблица стилей для формы регистрации -->
+    <style>
+        #form1 {
+            width: 320px;
+            border: 1px solid silver;
+            border-radius: 15px;
+            margin: 25px auto;
+            padding: 20px 30px;
+            text-align: left;
+            box-shadow: 0 0 silver, 10px 0px 40px silver;
+        }
+        input {
+            width: 100%;
+        }
+        .b1 {
+            width: 49%;
+        }
+    </style>
+    <!-- Управляющий сценарий для формы регистрации -->
+    <script>
+
+    </script>
+{% endblock content %}
