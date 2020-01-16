@@ -25,8 +25,8 @@ SECRET_KEY = '%l42*+5x&1(tzi)d$q1+bmc=+c%@a)js4$6grd80)1-7_43ux7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'softmaster.pythonanywhere.com']
-
+# ALLOWED_HOSTS = [u'softmaster.pythonanywhere.com']
+ALLOWED_HOSTS = [u'127.0.0.1']
 
 # Application definition
 
@@ -126,9 +126,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
 # default static files settings for PythonAnywhere.
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
 MEDIA_ROOT = u'/home/softmaster/univer/media'
 MEDIA_URL = '/media/'
 STATIC_ROOT = u'/home/softmaster/univer/static'
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
