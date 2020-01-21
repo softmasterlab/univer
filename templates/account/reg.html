@@ -12,18 +12,26 @@
             <p>
                 Логин:<br>
                 <input type="text" id="login" name="login" required/>
+                <img id="login_ico" src="" class="icon">
+                <div id="login_err" class="err"></div>
             </p>
             <p>
                 Пароль:<br>
                 <input type="password" id="pass1" name="pass1" required/>
+                <img id="pass1_ico" src="" class="icon">
+                <div id="pass1_err" class="err"></div>
             </p>
             <p>
                 Повтор:<br>
                 <input type="password" id="pass2" name="pass2" required/>
+                <img id="pass2_ico" src="" class="icon">
+                <div id="pass2_err" class="err"></div>
             </p>
             <p>
                 E-Mail:<br>
                 <input type="email" id="email" name="email" required/>
+                <img id="email_ico" src="" class="icon">
+                <div id="email_err" class="err"></div>
             </p>
             <p style="margin-top: 30px">
                 <input type="submit" value="Отправить" class="b1"/>
@@ -44,10 +52,16 @@
             box-shadow: 0 0 silver, 10px 0px 40px silver;
         }
         input {
-            width: 100%;
+            width: 85%;
         }
         .b1 {
             width: 47%;
+        }
+        .err {
+            color: red;
+        }
+        .icon {
+            width: 24px;
         }
     </style>
     <!-- Управляющий сценарий для формы регистрации -->

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.models import User
 
 
 def reg(request):
@@ -11,13 +12,21 @@ def reg(request):
         pass2 = request.POST.get('pass2')
         email = request.POST.get('email')
 
-        # Проверяем доставку данных:
+        # Валидация данных будет здесь .....
+
+        # Проверка доставки данных:
         data = dict()
+        """
         data['message'] = 'ku-ku'
         data['login'] = login
         data['pass1'] = pass1
         data['pass2'] = pass2
         data['email'] = email
+        """
+
+        # Добавление пользователя в базу:
+        user = User.objects.create_user(login, email, pass1)
+        user.save()
 
         return render(request, 'account/reg_res.html', context=data)
 
