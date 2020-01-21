@@ -5,7 +5,7 @@
 
 {% block content %}
     <!-- Форма регистрации: -->
-    <div class="container" style="text-align: center; margin: 30px 0px">
+    <div class="container" style="text-align: center; margin-top: 45px; margin-bottom: 45px">
         <h3>Регистрация</h3>
         <form id="form1" method="post" action="/account/reg">
             {% csrf_token %}
@@ -27,6 +27,7 @@
             </p>
             <p style="margin-top: 30px">
                 <input type="submit" value="Отправить" class="b1"/>
+                &nbsp;
                 <input type="reset" value="Очистить" class="b1"/>
             </p>
         </form>
@@ -46,17 +47,9 @@
             width: 100%;
         }
         .b1 {
-            width: 49%;
+            width: 47%;
         }
     </style>
     <!-- Управляющий сценарий для формы регистрации -->
-    <script>
-
-        // JavaScript - язык для создания браузерных сценариев
-
-        window.onload(function () {
-            alert('Привет, JavaScript!');
-        });
-
-    </script>
+    <script src="../../static/js/reg.js"></script>
 {% endblock content %}

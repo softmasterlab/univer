@@ -5,17 +5,8 @@
 
 {% block content %}
     <div id="logo1" class="jumbotron">
-        <div class="container" style="text-align: center">
-            <h1 style="color: purple; font-size: 64pt">U N I V E R S I T Y</h1>
-            <br>
-            <h5 style="color: gold">
-                This is a template for a informational website.<br>
-                This is a template for a informational website.<br>
-                This is a template for a informational website.
-            </h5>
-            <br><br>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-        </div>
+        <h1 id="main">My University</h1>
+        <p id="btn"><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
     </div>
     <div class="container">
     <!-- Example row of columns -->
@@ -36,14 +27,22 @@
         <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div>
     </div>
-
-    <hr>
-
   </div>
     <style>
         #logo1 {
-            background-image: url('../../static/img/logo4.jpg');
+            background-image: url('../../static/img/logo_x2.jpg');
             background-size: cover;
+        }
+        #main {
+            margin-top: -30px;
+            margin-left: 40px;
+            font-size: 50pt;
+            color: purple;
+            text-shadow: 3px 3px yellow;
+        }
+        #btn {
+            margin-left: 39px;
+            margin-top: 130px;
         }
     </style>
 {% endblock content %}
