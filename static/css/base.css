@@ -16,3 +16,12 @@ body {
         font-size: 3.5rem;
     }
 }
+
+hr {
+    border-color: gray;
+}
+
+h6 {
+    font-size: 14pt;
+    font-family: "Comic Sans MS";
+}
