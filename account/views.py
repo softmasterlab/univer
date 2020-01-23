@@ -50,3 +50,7 @@ def exit(request):
 
 def reset(request):
     return render(request, 'account/reset.html')
+
+
+def ajax_reg(request):
+    pass
