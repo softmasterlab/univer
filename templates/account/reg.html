@@ -4,55 +4,55 @@
 {% block caption %} Страница Регитсрации {% endblock caption %}
 
 {% block content %}
+    {% load static %}
     <!-- Форма регистрации: -->
     <div class="container" style="text-align: center; margin-top: 45px; margin-bottom: 45px">
         <h3>Регистрация</h3>
         <form id="form1" method="post" action="/account/reg" onsubmit="return false">
             {% csrf_token %}
-            <p>
+            <div class="form-group">
                 Логин:<br>
                 <input type="text" id="login" name="login" required/>
-                <img id="login_ico" src="" class="icon">
+                <img id="login_ico" src="{% static 'img/question.png' %}" class="icon">
                 <div id="login_err" class="err"></div>
-            </p>
-            <p>
+            </div>
+            <div class="form-group">
                 Пароль:<br>
                 <input type="password" id="pass1" name="pass1" required/>
-                <img id="pass1_ico" src="" class="icon">
+                <img id="pass1_ico" src="{% static 'img/question.png' %}" class="icon">
                 <div id="pass1_err" class="err"></div>
-            </p>
-            <p>
+            </div>
+            <div class="form-group">
                 Повтор:<br>
                 <input type="password" id="pass2" name="pass2" required/>
-                <img id="pass2_ico" src="" class="icon">
+                <img id="pass2_ico" src="{% static 'img/question.png' %}" class="icon">
                 <div id="pass2_err" class="err"></div>
-            </p>
-            <p>
+            </div>
+            <div class="form-group">
                 E-Mail:<br>
                 <input type="email" id="email" name="email" required/>
-                <img id="email_ico" src="" class="icon">
+                <img id="email_ico" src="{% static 'img/question.png' %}" class="icon">
                 <div id="email_err" class="err"></div>
-            </p>
+            </div>
             <p style="margin-top: 30px">
-                <input id="submit" type="submit" value="Отправить" class="b1"/>
-                &nbsp;
-                <input type="reset" value="Очистить" class="b1"/>
+                <input id="submit" type="submit" value="Отправить" class="btn btn-success" style="width: 47%"/>
+                <input id="reset" type="reset" value="Очистить" class="btn btn-success" style="width: 47%"/>
             </p>
         </form>
     </div>
     <!-- Таблица стилей для формы регистрации -->
     <style>
         #form1 {
-            width: 320px;
+            width: 350px;
             border: 1px solid silver;
             border-radius: 15px;
             margin: 25px auto;
-            padding: 20px 30px;
+            padding: 30px 40px;
             text-align: left;
             box-shadow: 0 0 silver, 10px 0px 40px silver;
         }
         input {
-            width: 85%;
+            width: 87%;
         }
         .b1 {
             width: 47%;
