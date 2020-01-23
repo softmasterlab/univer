@@ -28,6 +28,15 @@ def reg(request):
         user = User.objects.create_user(login, email, pass1)
         user.save()
 
+        # Формирование отчета о результатах попытки регистрации:
+        if user is None:
+            data['color'] = 'red'
+            data['report'] = 'Регистрация провалена!'
+        else:
+            data['color'] = 'green'
+            data['report'] = 'Регистрация успешно завершена!'
+
+        # Загрузка страницы отчета по результатам регистрации:
         return render(request, 'account/reg_res.html', context=data)
 
 

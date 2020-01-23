@@ -23,9 +23,11 @@ $(document).ready(function () {
         if (regExp1.test(_login)) {
             $('#login_ico').attr('src', '../../static/img/ok.png');
             $('#login_err').text('');
+            valid = true;
         } else {
             $('#login_ico').attr('src', '../../static/img/cross.png');
             $('#login_err').text('Логин должен быть буквенно-цифорвым, длиной от 6 до 16 символов');
+            valid = false;
         }
 
 
@@ -34,6 +36,15 @@ $(document).ready(function () {
     $('#login').focus(function () {
         $('#login_ico').attr('src', '');
         $('#login_err').text('');
+    });
+
+    $('#submit').click(function () {
+        if (valid == true) {
+            $('#form1').attr('onsubmit', 'return true');
+        } else {
+            $('#form1').attr('onsubmit', 'return false');
+            alert('Форма содержит некорректные данные! \nОтправка данных заблокирована!');
+        }
     });
 
 });
