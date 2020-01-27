@@ -26,19 +26,30 @@ $(document).ready(function () {
     $('#login').blur(function () {
         let _login = $(this).val();
         if (regExp1.test(_login)) {
-            $('#login_ico').attr('src', '../../static/img/ok.png');
-            $('#login_err').text('');
+            // $('#login_ico').attr('src', '../../static/img/ok.png');
+            // $('#login_err').text('');
             // Проверка занятости логина:
-            //$.ajax({
-
-            //});
-            valid = true;
+            $.ajax({
+                url:"/account/ajax_reg",
+                data:"login=" + _login,
+                success:function(result) {
+                    if (result.mess == 'занят') {
+                        $('#login_ico').attr('src', '../../static/img/cross.png');
+                        $('#login_err').text('Логин занят!');
+                        valid = false
+                    } else {
+                        $('#login_ico').attr('src', '../../static/img/ok.png');
+                        $('#login_err').text('');
+                        valid = true
+                    }
+                }
+            });
+            // valid = true;
         } else {
             $('#login_ico').attr('src', '../../static/img/cross.png');
             $('#login_err').text('Логин должен быть буквенно-цифорвым, длиной от 6 до 16 символов');
             valid = false;
         }
-
 
     });
 
@@ -58,14 +69,15 @@ $(document).ready(function () {
 
     // 3 -> Валидация подтверждения:
     $('#pass2').blur(function () {
-        let _pass2 = $(this).val();
-        if (regExp2.test(_pass2)) {
+        let _pass1 = $('#pass1').val();
+        let _pass2 = $('#pass2').val();
+        if (_pass1 == _pass2) {
             $('#pass2_ico').attr('src', '../../static/img/ok.png');
             $('#pass2_err').text('');
             valid = true;
         } else {
             $('#pass2_ico').attr('src', '../../static/img/cross.png');
-            $('#pass2_err').text('Пароль должен быть строгим буквенно-цифорвым, длиной от 8 символов');
+            $('#pass2_err').text('Пароли не совпадают!');
             valid = false;
         }
     });
