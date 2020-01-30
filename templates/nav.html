@@ -16,21 +16,43 @@
                     <a class="nav-link" href="/home/contact">Контакты</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Факультеты</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Подразделения</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="/faculties">Факультеты</a>
+                        <a class="dropdown-item" href="#">Кафелры</a>
+                        <a class="dropdown-item" href="#">Группы</a>
+                        <a class="dropdown-item" href="#">Студенты</a>
+                        <a class="dropdown-item" href="#">Сотрудники</a>
+                        <a class="dropdown-item" href="#">Проекты</a>
                     </div>
                 </li>
             </ul>
             <ul class="navbar-nav navbar-right">
                 <li class="nav-item">
-                    <a class="nav-link" href="/account/entry">Вход</a>
+                    <a class="nav-link" href="" style="margin-right: 50px" >
+                        Привет,
+                        {% if user.username == '' %}
+                            Гость!
+                        {% else %}
+                            {{ user.username }}
+                        {% endif %}
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/account/reg">Регистрация</a>
-                </li>
+                {% if user.username == '' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/account/entry">Вход</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/account/reg">Регистрация</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/account/exit">Выход</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/account/profile">Профиль</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

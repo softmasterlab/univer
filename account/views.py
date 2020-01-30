@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.http import JsonResponse
+from django.contrib.auth import authenticate, login, logout
 
 
 def reg(request):
@@ -56,20 +57,30 @@ def entry(request):
         data['report'] = 'Test Report'
 
         # Получаем данные из формы авторизации:
-        login = request.POST.get('login')
-        pass1 = request.POST.get('pass1')
+        _login = request.POST.get('login')
+        _pass1 = request.POST.get('pass1')
 
         # Проверка доставки данных:
-        data['message'] = 'ku-ku'
-        data['login'] = login
-        data['pass1'] = pass1
+        data['login'] = _login
+        data['pass1'] = _pass1
 
-        # Загрузка страницы отчета по результатам авторизации:
-        return render(request, 'account/entry_res.html', context=data)
+        # Аутентификация пользователя:
+        user = authenticate(request, username=_login, password=_pass1)
+        if user is not None:
+            data['color'] = 'green'
+            data['report'] = 'Вы успешно авторизованы!'
+            login(request, user)
+            return redirect('/home')
+        else:
+            data['color'] = 'red'
+            data['report'] = 'Пользователь не найден!'
+            # Загрузка страницы отчета по результатам авторизации:
+            return render(request, 'account/entry_res.html', context=data)
 
 
 def exit(request):
-    return render(request, 'account/exit.html')
+    logout(request)
+    return redirect('/home')
 
 
 def reset(request):
@@ -87,3 +98,7 @@ def ajax_reg(request):
         response['mess'] = 'свободен'
 
     return JsonResponse(response)
+
+
+def profile(request):
+    return render(request, 'account/profile.html')

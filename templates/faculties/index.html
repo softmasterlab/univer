@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} Управление факультетами {% endblock title %}
+
+{% block content %}
+    <div class="container"
+         style="text-align: center; margin-top: 45px; margin-bottom: 45px">
+        <h3>Управление факультетами</h3>
+        {% if user.username == 'admin2' %}
+            <div style="text-algn: left; margin: 10px">
+                <a href="/faculties/create">Добавить факультет</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}
