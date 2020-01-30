@@ -47,7 +47,25 @@ def reg(request):
 
 
 def entry(request):
-    return render(request, 'account/entry.html')
+    if request.method == 'GET':
+        return render(request, 'account/entry.html')
+    elif request.method == 'POST':
+        # Создаем словарь для передачи сообщений на страницу отчета
+        data = dict()
+        data['color'] = 'purple'
+        data['report'] = 'Test Report'
+
+        # Получаем данные из формы авторизации:
+        login = request.POST.get('login')
+        pass1 = request.POST.get('pass1')
+
+        # Проверка доставки данных:
+        data['message'] = 'ku-ku'
+        data['login'] = login
+        data['pass1'] = pass1
+
+        # Загрузка страницы отчета по результатам авторизации:
+        return render(request, 'account/entry_res.html', context=data)
 
 
 def exit(request):

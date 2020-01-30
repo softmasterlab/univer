@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} Отчет об авторизации {% endblock title %}
+{% block caption %} Страница отчета об авторизации {% endblock caption %}
+
+{% block content %}
+    <div class="container" style="text-align: center; margin-top: 45px; margin-bottom: 45px">
+        <h3>Отчет об вторизации</h3>
+        <h5 style="color: {{ color }}">{{ report }}</h5>
+        <h5>
+            Login: {{ login }}
+            <br>
+            Passw: {{ pass1 }}
+        </h5>
+    </div>
+{% endblock content %}

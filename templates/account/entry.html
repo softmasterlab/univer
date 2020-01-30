@@ -4,8 +4,54 @@
 {% block caption %} Страница Входа {% endblock caption %}
 
 {% block content %}
+    {% load static %}
     <div class="container" style="text-align: center; margin-top: 45px; margin-bottom: 45px">
-        <h3>Авторизация</h3>
-
+        <!-- Форма авторизации -->
+        <div class="container" style="text-align: center; margin-top: 45px; margin-bottom: 45px">
+            <h3>Авторизация</h3>
+            <form id="form2" method="post" action="/account/entry" onsubmit="return true">
+                {% csrf_token %}
+                <div class="from-group">
+                    Логин: <br>
+                    <input type="text" id="login" name="login" required>
+                    <img id="login_ico" src="{% static 'img/question.png' %}" class="icon">
+                    <div id="login_err" class="err"></div>
+                </div>
+                <div class="from-group">
+                    Пароль: <br>
+                    <input type="text" id="pass1" name="pass1" required>
+                    <img id="pass1_ico" src="{% static 'img/question.png' %}" class="icon">
+                    <div id="pass1_err" class="err"></div>
+                </div>
+                <p style="margin-top: 30px">
+                    <input id="submit" type="submit" value="Отправить" class="btn btn-success" style="width: 47%">
+                    <input id="reset" type="reset" value="Очистить" class="btn btn-success" style="width: 47%">
+                </p>
+            </form>
+        </div>
     </div>
+    <!-- Таблица стилей для формы авторизации: -->
+    <style>
+        #form2 {
+            width: 350px;
+            border: 1px solid silver;
+            border-radius: 15px;
+            margin: 25px auto;
+            padding: 30px 40px;
+            text-align: left;
+            box-shadow: 0 0 silver, 10px 0px 40px silver;
+        }
+        input {
+            width: 87%;
+        }
+        .b1 {
+            width: 47%;
+        }
+        .err {
+            color: red;
+        }
+        .icon {
+            width: 24px;
+        }
+    </style>
 {% endblock content %}
