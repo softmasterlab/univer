@@ -41,7 +41,12 @@ INSTALLED_APPS = [
     'home',
     'news',
     'faculties',
-    'gallery'
+    'gallery',
+    'students',
+    'teachers',
+    'employees',
+    'groups',
+    'departments'
 ]
 
 MIDDLEWARE = [

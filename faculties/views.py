@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from .models import Faculty
-from .forms import FacultyForm
+from .forms import FacultyForm, FacultyForm2
 
 
 def index(request):
     data = dict()
     all_faculties = Faculty.objects.all()
     data['faculties'] = all_faculties
-    paginator = Paginator(all_faculties, 2)
+    paginator = Paginator(all_faculties, 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     data['page_obj'] = page_obj
@@ -33,13 +33,36 @@ def details(request, fid: int):
     return render(request, 'faculties/details.html', context=data)
 
 
+# !Bug ...
 def edit(request, fid: int):
     data = dict()
-    data['faculty'] = Faculty.objects.get(id=fid)
-    return render(request, 'faculties/details.html', context=data)
+    faculty = Faculty.objects.get(id=fid)
+    if request.method == 'GET':
+        data['form'] = FacultyForm2(instance=faculty)
+        data['faculty'] = faculty
+        return render(request, 'faculties/edit.html', context=data)
+    elif request.method == 'POST':
+        faculty_form = FacultyForm2(request.POST)
+        if faculty_form.is_valid():
+            _title = faculty_form.cleaned_data['title']
+            _about = faculty_form.cleaned_data['about']
+            _content = faculty_form.cleaned_data['content']
+            _site = faculty_form.cleaned_data['site']
+            faculty.update(
+                title=_title,
+                about=_about,
+                content=_content,
+                site=_site
+            )
+        return redirect('/faculties')
 
 
 def delete(request, fid: int):
     data = dict()
-    data['faculty'] = Faculty.objects.get(id=fid)
-    return render(request, 'faculties/details.html', context=data)
+    faculty = Faculty.objects.get(id=fid)
+    if request.method == 'GET':
+        data['faculty'] = faculty
+        return render(request, 'faculties/delete.html', context=data)
+    elif request.method == 'POST':
+        faculty.delete()
+        return redirect('/faculties')

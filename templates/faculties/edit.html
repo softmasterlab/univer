@@ -6,5 +6,44 @@
     <div class="container"
          style="text-align: center; margin-top: 45px; margin-bottom: 45px">
         <h3>Редактирование факультета</h3>
+        <h1 style="color: darkcyan">
+            {{ faculty.title }}
+        </h1>
+        <br>
+        <form id="form3" method="post" action="/faculties/edit/{{ faculty.id }}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        <div>
+                            {{ field }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <p style="margin-top: 30px">
+                <input id="b1" type="submit" value="Сохранить" class="btn btn-success">
+                <input id="b2" type="reset" value="Очистить" class="btn btn-success">
+            </p>
+        </form>
+        <br>
+        <a href="/faculties">Назад к списку факультетов</a>
     </div>
+    <style>
+        #form3 {
+            text-align: left;
+        }
+        #b1, #b2 {
+            width: 150px;
+            margin-left: 5px;
+        }
+        .form-group input {
+            width: 50%;
+            height: 30px;
+        }
+        .form-group textarea {
+            width: 50%;
+        }
+    </style>
 {% endblock content %}

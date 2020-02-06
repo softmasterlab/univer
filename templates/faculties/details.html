@@ -6,5 +6,20 @@
     <div class="container"
          style="text-align: center; margin-top: 45px; margin-bottom: 45px">
         <h3>Информация о факультете</h3>
+        <h1 style="color: darkcyan">
+            {{ faculty.title }}
+        </h1>
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+                <img src="/media/{{ faculty.picture }}" width="100%">
+            </div>
+            <div class="col-md-3">
+                <img src="/media/{{ faculty.photo }}" width="100%">
+            </div>
+            <div class="col-md-6">{{ faculty.content }}</div>
+        </div>
+        <br>
+        <a href="/faculties">Назад к списку факультетов</a>
     </div>
 {% endblock content %}
