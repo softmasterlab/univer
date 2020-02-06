@@ -33,7 +33,6 @@ def details(request, fid: int):
     return render(request, 'faculties/details.html', context=data)
 
 
-# !Bug ...
 def edit(request, fid: int):
     data = dict()
     faculty = Faculty.objects.get(id=fid)
@@ -44,16 +43,11 @@ def edit(request, fid: int):
     elif request.method == 'POST':
         faculty_form = FacultyForm2(request.POST)
         if faculty_form.is_valid():
-            _title = faculty_form.cleaned_data['title']
-            _about = faculty_form.cleaned_data['about']
-            _content = faculty_form.cleaned_data['content']
-            _site = faculty_form.cleaned_data['site']
-            faculty.update(
-                title=_title,
-                about=_about,
-                content=_content,
-                site=_site
-            )
+            faculty.title = faculty_form.cleaned_data['title']
+            faculty.about = faculty_form.cleaned_data['about']
+            faculty.content = faculty_form.cleaned_data['content']
+            faculty.site = faculty_form.cleaned_data['site']
+            faculty.save()
         return redirect('/faculties')
 
 
